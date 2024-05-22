@@ -39,7 +39,16 @@ function syncIpriziv(recruit) {
 
   errors.data = result.errors
 
-  result.isValid ? alert('suc') : alert('fail')
+  if (!result.isValid) return
+  const transformedRecruit = RecruitTransformer.transform(recruit)
+  
+  fetch(`http://127.0.0.1:3000/recruits/${recruit.id}/synciprizriv`, {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json;charset=utf-8'
+	},
+	body: JSON.stringify(transformedRecruit)
+  })
 }
 </script>
 

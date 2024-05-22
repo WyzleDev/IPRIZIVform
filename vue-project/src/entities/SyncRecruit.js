@@ -42,7 +42,7 @@ class Medical {
         doctorId_0,
         doctorId_1
     }={}) {
-        this.healthCategory = healthCategory
+        this.healthCategory = { id: healthCategory }
         this.weight = weight
         this.height = height
         this.healthParagraph_0 = healthParagraph_0

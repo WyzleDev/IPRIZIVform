@@ -14,7 +14,6 @@ import {
 function dateValidate(dateString, maxYear = new Date().getFullYear()) {
   const dateParts = dateString.split('.')
   const [day, month, year] = dateParts
-
   return (
     dateParts.length === 3 &&
     0 < +day &&

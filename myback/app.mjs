@@ -22,7 +22,20 @@ app.use(express.json())
 app.use(cors())
 
 app.post('/recruits/:id/synciprizriv', async (req, res) => {
-  fetch
+	console.log('sync')
+	console.log(res)
+  const headers = {
+	  'Content-Type': 'application/json;charset=utf-8',
+	  cookie: ".AspNetCore.Cookies=CfDJ8JAXXuPv2jJIlb1N0jhZ5xqJ7cHOuRh-82uchovEwhzOFPWKI1qo11BZvhnkXr3SoTzPtRGYS0nWvFtLZtQkOFsYByqQeb5oe-hwOuNvHZ4ZWhzPFJp_EA6HEpvi3dSx3eONReL_fGq5GKwV4m3hTihux_96qx3Q3LcrAjrrX-2mw4wuqqwnEg6Uud4RqZhQJp4Exvou8uOtCFwudVizlsEmaQRlvN683SCnU54SyKSc1P0uFC006jwIdhjLZHZ9peIDcO9IEFk-vnR6bxzocpVyVgm5sMemsw1XpYpzKupMx9tkh_0sYoZy2qqmGwPTkd4T0S0LhQx_7rg8Ib3siynHSOdZzzqmsmTsQodfycB_dav98X3BZq2IrgzO2eT8Dc-W7tgp_vRAiOllMYuza6YJh0R-BgLto6PCY5wQB4jfPSQNn235oBy9e8iA7cnQZoLePRRKx7CCan_9kKp_Jp78p6ulymQyV3CBQgTJm80-kH7NH7Wd4qs-YGZcQBr45vGirwIQIdp3Hci_LLNHNRiZvKaea4pDtv8N2L0YaAZ8; DataBase=v_16"
+  }
+  const body = JSON.stringify(req.body)
+  const r = await fetch("http://192.168.0.137:33380/api/recruits", {
+	headers: headers,
+	method: 'POST',
+	body: body
+  })
+  console.log(req.body)
+  console.log(JSON.stringify(req.body))
 })
 
 app.get('/recruits', async (req, res) => {

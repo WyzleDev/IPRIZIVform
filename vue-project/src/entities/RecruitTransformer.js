@@ -22,6 +22,11 @@ function parseDate(string) {
   return `${year}-${month}-${day}T00:00:00`
 }
 
+function parseDateWithZone(string) {
+  const [day, month, year] = string.split('.')
+  return `${year}-${month}-${day}T00:00:00+03`
+}
+
 class CustomObject extends Object {
   constructor(obj) {
     super()
@@ -102,7 +107,7 @@ export class RecruitTransformer {
       militaryDocument: {
         series: recruitRecord.militaryDocument.series,
         number: recruitRecord.militaryDocument.number,
-        creationDate: parseDate(recruitRecord.militaryDocument.issuedDate),
+        creationDate: parseDateWithZone(recruitRecord.militaryDocument.issuedDate),
         militaryBadgeNumber: recruitRecord.militaryDocument.militaryBadge,
         comissionDecisionDate: parseDate(recruitRecord.militaryDocument.comissionDecisionDate)
       }
